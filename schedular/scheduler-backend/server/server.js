@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv')
 const DBCONNECT = require('./db/connect');
-const Task = require('../models/DataModel')
+const taskRoutes = require('../routes/taskRoutes')
 
 dotenv.config(); //Load environment variables
 
@@ -22,16 +22,7 @@ DBCONNECT.once('open', () =>{
   console.log('connected to MongoDB')
 });
 
-// Define Routes
-app.get('/api/task', async(req, res) => {
-  // Replace with your data-fetching logic
-  try{
-    const task = await Task.find();
-    res.json(task);
-  }
-  catch (error){
-    res.status(500).send(error);
-  }
-});
+// Use the saveTask function
+app.use('/api', taskRoutes);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

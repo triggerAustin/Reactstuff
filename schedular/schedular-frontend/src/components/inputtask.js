@@ -3,6 +3,40 @@ import {MdOutlineAccessTimeFilled} from 'react-icons/md'
 import { FaRegListAlt, FaSlackHash } from "react-icons/fa";
 
 const Inputtask = () =>{
+        // Example in a React component
+  const saveTask = async () => {
+    const taskData = {
+      taskTitle: 'Complete Assignment',
+      description: 'Finish the React assignment by Monday',
+      dateSet: new Date(), // Use the current date
+      dateToStart: new Date('2024-08-25'),
+      dateToComplete: new Date('2024-08-30')
+    };
+    
+    try {
+        console.log('started');
+      const response = await fetch(
+        'http://localhost:5000/api/tasks',
+        {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json' 
+          },
+        body: JSON.stringify(taskData)
+        }
+      )
+    
+      if (response.ok) {
+        const savedTask = await response.json();
+        console.log( savedTask);
+      } else {
+        console.error('Failed to save task');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+      };
+      saveTask();
         const [inputValue, setInputValue] = useState('');
         const handleInputChange = (event) => {
                 setInputValue(event.target.value);

@@ -1,0 +1,35 @@
+fixed this err{
+    /opt/lampp/htdocs/Reactstuff/schedular/scheduler-backend/node_modules/express/lib/router/route.js:216
+        throw new Error(msg);
+        ^
+
+Error: Route.post() requires a callback function but got a [object Undefined]
+    at Route.<computed> [as post] (/opt/lampp/htdocs/Reactstuff/schedular/scheduler-backend/node_modules/express/lib/router/route.js:216:15)
+    at app.<computed> [as post] (/opt/lampp/htdocs/Reactstuff/schedular/scheduler-backend/node_modules/express/lib/application.js:499:19)
+    at Object.<anonymous> (/opt/lampp/htdocs/Reactstuff/schedular/scheduler-backend/server/server.js:26:5)
+    at Module._compile (node:internal/modules/cjs/loader:1356:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1414:10)
+    at Module.load (node:internal/modules/cjs/loader:1197:32)
+    at Module._load (node:internal/modules/cjs/loader:1013:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:128:12)
+    at node:internal/main/run_main_module:28:49
+
+Node.js v18.19.1
+[nodemon] app crashed - waiting for file changes before starting...
+
+}
+by fixing the export here in routes/taskRoutes.js{
+    const express = require('express');
+const router = express.Router();
+const { saveTask } = require('../controllers/taskController');
+
+// Define routes
+router.post('/tasks', saveTask); // POST /api/tasks
+// router.get('/', getTasks);    // GET /api/tasks
+
+module.exports = router;
+
+}
+and the import here in server.js{
+    const taskRoutes = require('../routes/taskRoutes')
+}
