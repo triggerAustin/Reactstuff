@@ -9,7 +9,7 @@ const Listitem = (props) => {
         return(
                 <>
                         <div onClick={ColorCode}
-                                 className={`h-8 hover:bg-gray-400 mt-2 p-4 w-4/5 rounded-md flex flex-row justify-start items-center cursor-pointer 
+                                 className={`h-8 hover:bg-gray-400 mt-2 p-4 sm:w-4/5 lg:4/5 rounded-md flex flex-row justify-start items-center cursor-pointer 
                                         ${isActive ? "bg-gray-300" : null}`}>
                                 {props.icon &&  <span className="mr-3 text-xl font-black">{props.icon} </span>}
                                 <span className="flex flex-row justify-between w-full">

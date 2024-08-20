@@ -1,6 +1,6 @@
-import React from 'react';
+import {React, useState } from 'react';
 import Listitem from './navitem';
-import { FaCog, FaRegUserCircle, FaCalendarDay, FaListAlt } from "react-icons/fa"
+import { FaBars, FaCog, FaRegUserCircle, FaCalendarDay, FaListAlt } from "react-icons/fa"
 
 const Navbar = (props) => {
   const links = [];
@@ -26,16 +26,24 @@ const Navbar = (props) => {
     const {title, count} = tagList[i];
     tags.push(<Listitem title={title} count={count} key={i}/>)
   }
-  
+  const [showContents, setShowContents] = useState(true);
+  const minimizeBar = ()=>{
+    setShowContents(!showContents)
+  };
   return(
-    <div className='w-2/12'>
-        <div className=' h-1/3 flex flex-col'>
+    <div className={`${showContents ? ' md:w-1 lg:w-5' : 'w-5 lg:w-5 none bg-white'}`}>
+      
+        <div className='  h-1/3 flex flex-col '>
           <>
-            <FaCog/>
+           
             <div className='h-1/3 flex flex-col p-3'>
                 <span className='text-md font-bold'>{props.name}</span>
                 <span className='rounded-md bg-green-300 p-2 font-bold text-sm'>Go premium</span>
             </div>
+            <div className=' flex flex-row justify-between'>
+             <FaCog className='text-2xl'/>
+             <FaBars className='text-3xl' onClick={minimizeBar}/>
+           </div> 
           </>
           <div className='flex flex-col align-center items-center'>
             {links}
