@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App flex box-border sm:w-full">
       <Navbar name = {"Austin Ng'ang'a"}/>
-      <main className="flex-1 flex-col sm:w-full lg:w-10/12 h-9/12 bg-gray-50 sm:overflow-x-hidden">
+      <main className="flex-1 flex-col sm:w-full h-9/12 bg-gray-50 sm:overflow-x-hidden">
         
         {window.innerWidth < 768 ?
         (

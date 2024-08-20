@@ -31,7 +31,7 @@ const Navbar = (props) => {
     setShowContents(!showContents)
   };
   return(
-    <div className={`${showContents ? ' md:w-1 lg:w-5' : 'w-5 lg:w-5 none bg-white'}`}>
+    <div className={`${showContents ? ' md:w-1 lg:w-2/12' : 'w-5 lg:w-5 none bg-white'}`}>
       
         <div className='  h-1/3 flex flex-col '>
           <>

@@ -14,7 +14,7 @@ const Eventstab = (props) =>{
               }
   
         return(
-                <div className=" sm:w-9/12 sm:top-0 sm:h-full lg:h-screen top-0 right-0 fixed lg:mr-2 overflow-y-scroll p-3 bg-white" >
+                <div className=" sm:w-9/12 sm:top-0 sm:h-full lg:h-screen lg:w-1/4 top-0 right-0 fixed lg:mr-2 overflow-y-scroll p-3 bg-white" >
                   
                  
                         <div className="sticky top-0 bg-gray-200 p-1.5 px-3 rounded flex flex-row justify-between items-center"
