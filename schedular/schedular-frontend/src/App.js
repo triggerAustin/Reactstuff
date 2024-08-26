@@ -13,9 +13,9 @@ function App() {
     setdisplayDaily(!displayDaily);
   }
   return (
-    <div className="App flex box-border sm:w-full">
+    <div className="App flex box-border sm:w-full h-screen">
       <Navbar name = {"Austin Ng'ang'a"}/>
-      <main className="flex-1 flex-col sm:w-full h-9/12 bg-gray-50 sm:overflow-x-hidden">
+      <main className="flex-1 flex-col flex-shrink-1 sm:w-full  bg-gray-50 sm:overflow-x-hidden ml-7" style={{height : '99%'}}>
         
         {window.innerWidth < 768 ?
         (
@@ -23,7 +23,7 @@ function App() {
            <FaCog onClick={showDiv}/>
             {displayDaily
               ?
-              <Dailyitems name = {"June"} items_count    ={15}/>
+              <Dailyitems name = {"June"} items_count ={15}/>
               :
               <Eventstab events_count={15}/>
             }
@@ -31,7 +31,7 @@ function App() {
         </>
         ) : (
         <>
-            <Dailyitems name = {"June"} items_count    ={15}/>
+            <Dailyitems name = {"June"} items_count={15}/>
             <Eventstab events_count={15}/>
         </>
         )};

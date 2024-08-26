@@ -11,7 +11,7 @@ const Item = () =>{
                 <>
                 {showContents && (
                         
-                <div className="rounded-lg mt-4 h-24 bg-gray-200 min-w-[300px]" style={{width : '98%'}}>
+                <div className="rounded-lg mt-4 h-24 bg-gray-200 min-w-[300px] align-middle" style={{width : '98%'}}>
                         <span className="float-left mr-2 text-green-400  h-full  rounded-r-md" style={{fontSize: '5rem', lineHeight: '1'}}>&middot;</span>
                       <div className="pt-3">
                         <span>

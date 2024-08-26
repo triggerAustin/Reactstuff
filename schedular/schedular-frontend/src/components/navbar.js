@@ -1,10 +1,13 @@
-import {React, useState } from 'react';
+import {React, useState, useEffect } from 'react';
 import Listitem from './navitem';
 import { FaBars, FaCog, FaRegUserCircle, FaCalendarDay, FaListAlt } from "react-icons/fa"
+import IconPack from './icon';
+
 
 const Navbar = (props) => {
   const links = [];
   const tags = [];
+  const spans = document.querySelectorAll('#navbar p');
   const propsList = [
   {icon : FaRegUserCircle , title : 'My Day'},
   {icon : FaCalendarDay, title : 'Next 7 Days'},
@@ -30,33 +33,45 @@ const Navbar = (props) => {
   const minimizeBar = ()=>{
     setShowContents(!showContents)
   };
+  
+  useEffect(() => {
+    spans.forEach(span => {
+      if (!showContents) {
+        span.classList.remove('hidden');
+        console.log('dsafd')
+      } else {
+        span.classList.add('hidden');
+      }
+    });
+  }, [showContents]);
+
   return(
-    <div className={`${showContents ? ' md:w-1 lg:w-2/12' : 'w-5 lg:w-5 none bg-white'}`}>
+    <div className={`${showContents ? ' md:w-5 lg:w-12' : 'w-1 lg:w-1/6'} h-screen min-h-max pl-2 pr-1 z-10 absolute bg-gray-50`} id='navbar'>
       
         <div className='  h-1/3 flex flex-col '>
           <>
            
-            <div className='h-1/3 flex flex-col p-3'>
-                <span className='text-md font-bold'>{props.name}</span>
-                <span className='rounded-md bg-green-300 p-2 font-bold text-sm'>Go premium</span>
+            <div className='h-1/3 flex flex-col p-1'>
+                <p className=' hidden text-md font-bold'>{props.name}</p>
+                <p className=' hidden rounded-md bg-green-300 p-2 font-bold text-sm'>Go premium</p>
             </div>
-            <div className=' flex flex-row justify-between'>
-             <FaCog className='text-2xl'/>
-             <FaBars className='text-3xl' onClick={minimizeBar}/>
+            <div className={`${showContents ? 'flex-col gap-2' : 'flex-row'} flex justify-between`}>
+             <IconPack iconName={<FaBars/>} iconFn={minimizeBar}/>
+             <IconPack iconName={<FaCog />}/>
            </div> 
           </>
           <div className='flex flex-col align-center items-center'>
             {links}
           </div>
         </div>
-        <div className=' h-3/6 flex flex-col p-3'>
-          <span className='self-start text-lg font-medium mb-2'>My List +</span>
+        <div className=' h-3/6 flex flex-col p-1'>
+          <p className=' hidden self-start text-lg font-medium mb-2'>My List +</p>
           <div className='flex flex-col align-center items-center'>
             {tags}
           </div>
         </div>
         <div className='h-1/6'>
-            contact
+            <p className='hidden '>contact</p>
         </div>
     </div>
   )

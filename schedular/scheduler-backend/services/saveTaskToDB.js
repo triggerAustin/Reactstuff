@@ -2,11 +2,12 @@ const Task = require('../models/DataModel')
 
 const saveTaskToDB = async(taskData) =>{
     try {
-      const savedTask = await Task.create(taskData);
-      console.log('Task saved to DB');
-      return savedTask
+      await Task.create(taskData);
+      const msg = 'Task saved to DB'
+      console.log(JSON.stringify(msg));
     } catch (error) {
-      console.error('Error saving task:', error);
+      const errMsg = 'Error saving task:'
+      console.error(JSON.stringify(errMsg), error);
     }
 }
 
